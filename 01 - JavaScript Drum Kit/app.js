@@ -1,10 +1,6 @@
 //playSound describes what to do in response to an event, e :
   // - play audio with key code corresponding to e
-  // - change element with 1.CSS class key and 2.key code corresponding to e
-  //   to CSS class "playing"
-
 function playSound(e){
-  const key = document.querySelector(`.key[data-key='${e.keyCode}']`);
   const audio = document.querySelector(`audio[data-key='${e.keyCode}']`);
   //end function if key is pressed other than the ones that have sounds
   if (!audio) return;
@@ -12,6 +8,13 @@ function playSound(e){
   //otherwise, js waits until audio clip is done playing to restart.
   audio.currentTime = 0;
   audio.play();
+}
+
+//transitionBoxes describes what to do in response to an event, e :
+  // - change element with 1.CSS class key and 2.key code corresponding to e
+  //   to CSS class "playing"
+function transitionBoxes(e){
+  const key = document.querySelector(`.key[data-key='${e.keyCode}']`);
   key.classList.add("playing");
 }
 
@@ -25,10 +28,11 @@ function removeTransition(e){
   this.classList.remove("playing");
 }
 
-//play sound and make boxes bigger
+//When key is pressed, play sound and make box bigger for that key
 window.addEventListener('keydown', playSound);
+window.addEventListener('keydown', transitionBoxes);
 
-//make boxes smaller
-//run removeTransition function for all elements with CSS class key
+//For elements of CSS class key (boxes), listen for any transition that has ended.
+//Once it has, run removeTransition to make boxes smaller.
 const keys = document.querySelectorAll(".key");
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
