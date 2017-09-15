@@ -12,3 +12,8 @@ const audio2 = document.querySelector(`audio[data-key="${e.keyCode}"]`);
 const audio1 = document.querySelector(`audio[data-key='65']`);
 const audio2 = document.querySelector(`audio[data-key='${e.keyCode}']`);
 Is this true of everything in JS or just this method?
+
+Why is there no {} after the if statements in app.js?
+
+Need to understand how the function is applied here:
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
