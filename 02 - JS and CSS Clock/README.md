@@ -13,3 +13,7 @@ fill it in:
   background-color:white
 
 JS pointers use ${}
+
+stock images:
+http://superfamous.com/Images
+https://imgur.com/gallery/VvAjTz9
